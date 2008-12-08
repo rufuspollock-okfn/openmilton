@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      lang="en"
+      py:strip="">
+  
+  <py:def function="page_title">Guide to the Web Interface</py:def>
+
+  <div py:match="content">
+    <h2>Guide to the Web Interface</h2>
+    <p>
+      This page provides a guide to the features of the web interface.
+    </p>
+    <h3>
+      The Index
+    </h3>
+    <p>
+      The <a href="${h.url_for(controller='text', action='index')}">text index
+        page</a> contains a list of all of the material on the system.
+    </p>
+    <h3>
+      Viewing Works
+    </h3>
+    <p>
+      You can view works by clicking on the link available from the index page.
+      If you know the 'name/id' of a text you can view it directly by visiting the
+      url: ${h.url_for(controller='text', action='view', id='name')} (you can work
+      out id names by looking at the link urls on the index page).
+    </p>
+    
+    <h3>Viewing in different formats</h3>
+    <p>
+      You can view a given text in a different format by setting the format
+      argument in the url query string like so:
+    </p>
+    <pre>
+      ${h.url_for(controller='text', action='view', id='name', format='format_name')}
+    </pre>
+    <p>
+      So to view the text with name id 'paradise_lost' with line numbers shown you
+      would visit (this link will only work if that text is indeed available on
+      your system!):
+    </p>
+    <blockquote><p>
+      <a href="${h.url_for(controller='text', action='view', id='hamlet_gut', format='lineno')}">
+        ${h.url_for(controller='text', action='view', id='paradise_lost', format='lineno')}</a>
+    </p></blockquote>
+    <p>
+      Available formats are:
+    </p>
+    <ul>
+      <li>format=plain - plain version of the file (default)</li>
+      <li>format=raw - raw file returned as text/plain</li>
+      <li>format=lineno - text with line numbers added</li>
+    </ul> 
+
+    <h3>Multiviews</h3>
+    <p>
+      You can view mutiple texts at once by concatenating the name-ids
+      separated by '+'. For example to see parts of Paradise Lost side-by-side you would visit: <a
+        href="${h.url_for(controller='text', action='view', id=None, name='othello_gut_f othello_gut')}">
+        ${h.url_for(controller='text', action='view', id=None, name='paradise_lost paradise_lost')}
+      </a>
+    </p>
+
+    <h3>
+      Search
+    </h3>
+    <p>
+      See the <a href="${h.url_for(controller='search', action='index')}">search section</a>.
+    </p>
+
+    <h3>
+      Stats 
+    </h3>
+    <p>
+      See the <a href="${h.url_for(controller='stats', action='index')}">stats section</a>.
+    </p>
+  </div>
+
+  <xi:include href="layout.html" />
+</html>

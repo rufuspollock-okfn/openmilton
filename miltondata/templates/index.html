@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      py:strip="">
+  
+  <py:def function="page_title">Home</py:def>
+
+  <div py:match="content">
+    <h2>Welcome to ${c.site_title}</h2>
+    <p>
+      Welcome to the ${c.site_title} web interface. This site provides access
+      to many, but by no means all, of the facilities of the ${c.site_title}
+      <a
+        href="http://knowledgeforge.net/shakespeare/trac/"><strong>package</strong></a>.
+      For example you can:
+    </p>
+    <ul>
+      <li><a href="${h.url_for(controller='text', action=None)}">Read a variety
+        of texts (prose, poems etc) as well as ancillary material</a></li>
+      <li><a href="${h.url_for(controller='site', action='guide')}">Compare two
+        parts of the same text side-by-side</a></li>
+      <li><a href="${h.url_for(controller='stats',
+        action='index')}">Analyze text or word statistics</a></li>
+      <li><a href="${h.url_for(controller='search',
+        action='index')}">Search any text</a></li>
+    </ul>
+
+    <p>More information about the ${c.site_title} project can be found on the <a
+      href="${h.url_for(controller='site', action='about')}">about page</a>.</p>
+
+    <h3>Why Open Milton</h3>
+    <p>
+    If you type 'Milton' into Google you find thousands of websites why do we need another? First off, unlike most other sites, everything you find here is <a href="http://opendefinition.org/">open</a> &ndash; that is you're free to use, reuse, and redistribute it without any need to seek permission.</p>
+    <p>
+      However, more importantly, <strong>this website is only a small part of what we're about</strong>. It serves to demonstrate what you can do with the Open Milton package &ndash; a set of material and tools for exploring Milton's life and work. The website demonstrates a few of the ways in which the Open Milton package can be used. <strong>We actively encourage you to take and modify it to do things we haven't yet done</strong> &ndash; or even thought of! Some suggestions:
+    </p>
+    <ul>
+      <li>Prove William Blake's assertion that Milton was "of the Devil's party"</li>
+      <li>Our statistics are crude and simple. Perhaps you'd like to search for which words are most popular in Paradise Lost?</li>
+      <li>Explore his speech for the freedom of the presses, the Areopagitica, is still relevant</li>
+    </ul>
+  </div>
+
+  <xi:include href="layout.html" />
+</html>
